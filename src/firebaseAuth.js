@@ -1,4 +1,4 @@
-import { firebase } from "./index";
+import { firebase } from "./firebaseIni";
 
 const authMethods = {
   // firebase helper methods go here...
