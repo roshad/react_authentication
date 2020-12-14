@@ -32,8 +32,7 @@ function LoginComponent(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    authMethods.signin(email, password,setState);
-    
+    authMethods.signin(email, password,setState);    
   }
 
   return (

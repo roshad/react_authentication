@@ -8,15 +8,14 @@ const AuthContext = React.createContext();
 function App() {
   const [state, setState] = useState(false);
   useEffect(() => {
-      
-      auth.onAuthStateChanged((user) => {
-        console.log("onAuth",state, user);
-        if (user && !state) {
-          setState(true);
-        }else {setState(false)}
-      });
-     
-  },[]);
+    auth.onAuthStateChanged((user) => {
+      if (user && !state) {
+        setState(true);
+      } else {
+        setState(false);
+      }
+    });
+  }, []);
 
   return (
     <AuthContext.Provider value={{ authMethods, state }}>
