@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import {AuthContext} from "./App";
+import {AuthContext} from "./AuthContext";
 import { useHistory } from "react-router-dom";
 function LoginComponent(props) {
   const [email, changeEmail] = useState("");

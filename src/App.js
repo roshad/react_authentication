@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from "react";
 
 import Content from "./Content";
-import { auth } from "./firebaseIni";
-import authMethods from "./firebaseAuth";
-const AuthContext = React.createContext();
 
-function App() {
-  const [state, setState] = useState(false);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user && !state) {
-        setState(true);
-      } else {
-        setState(false);
-      }
-    });
-  }, []);
+import {AuthProvider} from './AuthContext'
+
+
+function App(props) {
+  
 
   return (
-    <AuthContext.Provider value={{ authMethods, state }}>
-      <Content />
-      123
-    </AuthContext.Provider>
+    <AuthProvider >
+      <Content />      
+    </AuthProvider>
   );
 }
 
-export { AuthContext, App };
+export default  App ;
