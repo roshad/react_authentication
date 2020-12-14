@@ -2,7 +2,7 @@ import React, { useContext} from 'react';
 
 function LoggedComponent(props) {
     
-   return <div></div>
+   return <div>Logged</div>
 
 }
 
