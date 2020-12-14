@@ -5,26 +5,25 @@ import { auth } from "./index";
 import authMethods from "./firebaseAuth";
 const AuthContext = React.createContext();
 
-class App extends React.Component {
-  state = { user: false };
-  componentDidMount() {
-    if (!this.state.user) {
+function App() {
+  const [state, setState] = useState(false);
+  useEffect(() => {
+      
       auth.onAuthStateChanged((user) => {
-        console.log(this.state.user, user);
-        if (user && !this.state.user) {
-          this.setState({ user: true });
-        }
+        console.log("onAuth",state, user);
+        if (user && !state) {
+          setState(true);
+        }else {setState(false)}
       });
-    }
-  }
-  render() {
-    return (
-      <AuthContext.Provider value={{ authMethods, state: this.state }}>
-        <Content />
-        123
-      </AuthContext.Provider>
-    );
-  }
+     
+  },[]);
+
+  return (
+    <AuthContext.Provider value={{ authMethods, state }}>
+      <Content />
+      123
+    </AuthContext.Provider>
+  );
 }
 
 export { AuthContext, App };

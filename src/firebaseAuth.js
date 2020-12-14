@@ -1,41 +1,32 @@
-import {firebase} from './index'
-
-
+import { firebase } from "./index";
 
 const authMethods = {
   // firebase helper methods go here...
-  
+
   signup: (email, password) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       //make res asynchonous so that we can make grab the token before saving it.
       .then(async (res) => {
-        
-        console.log(res)
+        console.log(res);
         //grab token from local storage and set to state.
         console.log(firebase.auth().currentUser);
-      })
-      
+      });
   },
-  signin: (email, password,setState) => {
+  signin: (email, password, setState) => {
     //change from create users to...
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
       //everything is almost exactly the same as the function above
       .then((res) => {
-        console.log(res)
+        console.log(res);
         //grab token from local storage and set to state.
-        console.log("currentUser",firebase.auth().currentUser);
-       
-        
-       
+        console.log("currentUser", firebase.auth().currentUser);
       })
-      .catch((err) => {
-        
-      });
+      .catch((err) => {});
   },
   //no need for email and password
   signout: (setErrors, setToken) => {
